@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+    <style>
+      #loader {
+          display: none; /* Cacher le loader au départ */
+          border: 4px solid #f3f3f3; /* Couleur de fond */
+          border-top: 4px solid #3498db; /* Couleur de la barre */
+          border-radius: 50%; /* Forme ronde */
+          width: 40px; /* Largeur du loader */
+          height: 40px; /* Hauteur du loader */
+          animation: spin 1s linear infinite; /* Animation de rotation */
+          margin: 10px left; /* Centrer le loader */
+      }
+
+      @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+      }
+
+      #app {
+          display: none; /* Cacher la div au départ */
+          background-color: lightblue;
+          padding: 20px;
+          margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="afficherBtn">Afficher la div après 3 secondes</button>
+    <div id="loader"></div>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+    <script>
+      document.getElementById('afficherBtn').addEventListener('click', function() {
+          // Afficher le loader
+          document.getElementById('loader').style.display = 'block';
+          document.getElementById('app').style.display = 'none'; // Cacher la div principale
+
+          setTimeout(function() {
+              // Cacher le loader et afficher la div principale
+              document.getElementById('loader').style.display = 'none';
+              document.getElementById('app').style.display = 'block'; // Afficher la div
+              document.getElementById('afficherBtn').style.display = 'none'; // cacher la div
+          }, 3000); // 3000 millisecondes = 3 secondes
+      });
+    </script>
+  </body>
+</html>
